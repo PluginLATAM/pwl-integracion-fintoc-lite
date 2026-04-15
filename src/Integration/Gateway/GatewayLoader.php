@@ -29,7 +29,7 @@ final class GatewayLoader
 	 */
 	public function register_gateway(array $methods): array
 	{
-		$methods[] = Gateway_Fintoc::class;
+		$methods[] = PWL_FINTOC_GATEWAY_CLASS;
 
 		return $methods;
 	}

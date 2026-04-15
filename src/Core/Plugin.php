@@ -40,17 +40,6 @@ final class Plugin
 		] as $class) {
 			$this->boot($class);
 		}
-
-		$pro = (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro')
-			? [
-				\PwlIntegracionFintoc\Integration\Pro\WebhookHandler::class,
-				\PwlIntegracionFintoc\Integration\Pro\WebhookDebugPage::class,
-			]
-			: [];
-
-		foreach ($pro as $class) {
-			$this->boot($class);
-		}
 	}
 
 	public function load_textdomain_on_init(): void

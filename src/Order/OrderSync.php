@@ -44,15 +44,22 @@ final class OrderSync
 				);
 			}
 			$order->save();
+			self::fire_after_session_applied($order, $session);
 
 			return;
 		}
 
-		if ($pi_status === 'failed' || $session_status === 'expired') {
+		if (
+			$pi_status === 'failed'
+			|| $session_status === 'expired'
+			|| $pi_status === 'rejected'
+			|| $pi_status === 'expired'
+		) {
 			$order->update_status(
 				'failed',
 				__('Fintoc: payment failed or session expired.', 'pwl-integracion-fintoc'),
 			);
+			self::fire_after_session_applied($order, $session);
 
 			return;
 		}
@@ -64,6 +71,7 @@ final class OrderSync
 					__('Fintoc: payment pending approval or further action.', 'pwl-integracion-fintoc'),
 				);
 			}
+			self::fire_after_session_applied($order, $session);
 
 			return;
 		}
@@ -78,6 +86,30 @@ final class OrderSync
 			);
 			$order->save();
 		}
+
+		self::fire_after_session_applied($order, $session);
+	}
+
+	/**
+	 * Fires after session/intent state is merged into the order. Pro listeners persist a rich snapshot; Lite has none.
+	 *
+	 * @param array<string, mixed> $session Checkout session or wrapper from apply_payment_intent_event.
+	 */
+	private static function fire_after_session_applied(\WC_Order $order, array $session): void
+	{
+		$intent = null;
+		if (isset($session['payment_resource']['payment_intent']) && is_array($session['payment_resource']['payment_intent'])) {
+			$intent = $session['payment_resource']['payment_intent'];
+		}
+
+		/**
+		 * After Fintoc checkout session state is applied to the order.
+		 *
+		 * @param \WC_Order $order WooCommerce order.
+		 * @param array<string, mixed> $session Session array (possibly synthetic).
+		 * @param array<string, mixed>|null $intent Payment intent if present.
+		 */
+		do_action('pwl_fintoc_after_session_applied', $order, $session, $intent);
 	}
 
 	/**

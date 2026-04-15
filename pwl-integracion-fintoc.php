@@ -18,7 +18,19 @@
 
 defined('ABSPATH') || exit;
 
-if (in_array('pwl-integracion-fintoc-pro/pwl-integracion-fintoc-pro.php', (array) get_option('active_plugins', []), true)) {
+// If Lite and Pro are both active, only the first loaded copy bootstraps (same namespace). No scanning of active_plugins.
+if (class_exists(\PwlIntegracionFintoc\Core\Plugin::class, false)) {
+	add_action(
+		'admin_notices',
+		static function (): void {
+			if (!current_user_can('activate_plugins') && !current_user_can('manage_woocommerce')) {
+				return;
+			}
+			echo '<div class="notice notice-warning"><p>'
+				. esc_html__('Another edition of PWL Integración Fintoc is already running. Deactivate the duplicate under Plugins.', 'pwl-integracion-fintoc')
+				. '</p></div>';
+		}
+	);
 	return;
 }
 
@@ -29,26 +41,16 @@ define('PWL_FINTOC_FILE', __FILE__);
 define('PWL_FINTOC_DIR', plugin_dir_path(__FILE__));
 define('PWL_FINTOC_URL', plugin_dir_url(__FILE__));
 define('PWL_FINTOC_PRO_URL', 'https://github.com/PluginLATAM');
+define('PWL_FINTOC_GATEWAY_CLASS', \PwlIntegracionFintoc\Integration\Gateway\Gateway_Fintoc::class);
 // phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 
-if (PWL_FINTOC_EDITION === 'pro') {
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- scoped to this file; name is plugin-prefixed.
-	$pwl_fintoc_lite_active = in_array(
-		'pwl-integracion-fintoc/pwl-integracion-fintoc.php',
-		(array) get_option('active_plugins', []),
-		true,
-	);
-	if ($pwl_fintoc_lite_active) {
-		add_action('admin_notices', static function () {
-			echo '<div class="notice notice-error"><p>'
-				. esc_html__('PWL Fintoc Pro cannot run while Lite is active. Deactivate Lite and keep only one edition.', 'pwl-integracion-fintoc')
-				. '</p></div>';
-		});
-		return;
-	}
-}
-
 require_once PWL_FINTOC_DIR . 'vendor/autoload.php';
+
+add_action(
+	'plugins_loaded',
+	[\PwlIntegracionFintoc\Integration\Lite\LiteAdminBootstrap::class, 'register_hooks'],
+	9
+);
 
 register_activation_hook(__FILE__, ['PwlIntegracionFintoc\Core\Activator', 'activate']);
 register_deactivation_hook(__FILE__, ['PwlIntegracionFintoc\Core\Deactivator', 'deactivate']);

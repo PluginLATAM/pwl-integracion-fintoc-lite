@@ -113,13 +113,7 @@ final class Admin
 			$clean['live_secret_key'] = $prev['live_secret_key'];
 		}
 
-		if (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro') {
-			if (isset($input['webhook_secret']) && (string) $input['webhook_secret'] !== '') {
-				$clean['webhook_secret'] = sanitize_text_field((string) $input['webhook_secret']);
-			}
-		}
-
-		return $clean;
+		return apply_filters('pwl_fintoc_sanitize_settings', $clean, $input, $prev);
 	}
 
 	/**
@@ -208,12 +202,12 @@ final class Admin
 		$o   = Options::get_all();
 		$opt = Options::OPTION_KEY;
 
-		$ph_opts = [
-			'desc' => __('API keys, payout, and Pro webhooks.', 'pwl-integracion-fintoc'),
-		];
-		if (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro') {
-			$ph_opts['badge'] = __('Pro', 'pwl-integracion-fintoc');
-		}
+		$ph_opts = apply_filters(
+			'pwl_fintoc_page_header_options',
+			[
+				'desc' => __('API keys, payout, and Pro webhooks.', 'pwl-integracion-fintoc'),
+			],
+		);
 
 		echo '<div class="wrap">';
 		echo '<div class="wads">';
@@ -401,41 +395,7 @@ final class Admin
 		);
 		// phpcs:enable
 
-		if (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro') {
-			$rest_url = rest_url('pwl-fintoc/v1/webhook');
-
-			$webhook_rows = [
-				[
-					'label'   => __('Webhook signing secret', 'pwl-integracion-fintoc'),
-					'desc'    => __('Dashboard → Webhooks. Empty = keep saved value.', 'pwl-integracion-fintoc'),
-					'control' => Components::input(
-						$opt . '[webhook_secret]',
-						[
-							'type'        => 'password',
-							'id'          => 'pwl-wh',
-							'value'       => (string) ($o['webhook_secret'] ?? ''),
-							'placeholder' => '',
-							'attrs'       => ['autocomplete' => 'off'],
-						],
-					),
-				],
-				[
-					'label'   => __('Webhook URL', 'pwl-integracion-fintoc'),
-					'desc'    => __('Add in Fintoc with the same test/live mode as your keys.', 'pwl-integracion-fintoc'),
-					'control' => '<code class="wads-font-mono" style="font-size:12px;word-break:break-all;">' . esc_html($rest_url) . '</code>',
-				],
-			];
-
-			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo Components::settings_section(
-				[
-					'title' => __('Webhooks (Pro)', 'pwl-integracion-fintoc'),
-					'desc'  => __('Signature check and request log.', 'pwl-integracion-fintoc'),
-					'rows'  => $webhook_rows,
-				],
-			);
-			// phpcs:enable
-		}
+		do_action('pwl_fintoc_settings_after_recipient', $o, $opt);
 
 		echo '<div class="wads-cluster" style="margin-top:8px">';
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -446,9 +406,7 @@ final class Admin
 		echo '</div>';
 		echo '</form>';
 
-		if (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION !== 'pro') {
-			$this->render_pro_upgrade_card();
-		}
+		do_action('pwl_fintoc_settings_after_form');
 
 		echo '</div>';
 
@@ -531,37 +489,4 @@ final class Admin
 		// phpcs:enable
 	}
 
-	private function render_pro_upgrade_card(): void
-	{
-		$url      = defined('PWL_FINTOC_PRO_URL') ? PWL_FINTOC_PRO_URL : 'https://github.com/PluginLATAM';
-		$features = [
-			__('Automatic order updates via webhooks', 'pwl-integracion-fintoc'),
-			__('Webhook log and signature verification', 'pwl-integracion-fintoc'),
-			__('Refunds from WooCommerce admin', 'pwl-integracion-fintoc'),
-			__('Async handling of pending payments', 'pwl-integracion-fintoc'),
-		];
-		$list = '<ul class="wads-stack wads-stack--sm" style="margin:0;padding-left:1.25em;list-style:disc;">';
-		foreach ($features as $f) {
-			$list .= '<li>' . esc_html($f) . '</li>';
-		}
-		$list .= '</ul>';
-
-		$body = $list;
-
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo Components::card(
-			[
-				'title'   => __('PWL Fintoc Pro', 'pwl-integracion-fintoc'),
-				'subtitle' => __('Available in the Pro edition.', 'pwl-integracion-fintoc'),
-				'variant' => 'accent',
-				'body'    => $body,
-				'footer'  => Components::button(
-					__('Learn about Pro', 'pwl-integracion-fintoc'),
-					'primary',
-					['href' => $url, 'attrs' => ['target' => '_blank', 'rel' => 'noopener noreferrer']],
-				),
-			],
-		);
-		// phpcs:enable
-	}
 }
