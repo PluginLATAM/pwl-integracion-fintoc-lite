@@ -81,6 +81,8 @@ final class CheckoutReturn
 	 */
 	public function on_cancel(): void
 	{
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Fintoc redirect URL (no WP form nonce); order key validated with hash_equals() below.
+
 		if (!function_exists('is_checkout') || !is_checkout()) {
 			return;
 		}
@@ -90,12 +92,15 @@ final class CheckoutReturn
 			return;
 		}
 
-		if (empty($_GET['pwl_fintoc_cancel']) || $_GET['pwl_fintoc_cancel'] !== '1') {
+		$cancel_flag = isset($_GET['pwl_fintoc_cancel']) ? sanitize_text_field(wp_unslash((string) $_GET['pwl_fintoc_cancel'])) : '';
+		if ($cancel_flag !== '1') {
 			return;
 		}
 
-		$order_id = isset($_GET['order_id']) ? absint($_GET['order_id']) : 0;
-		$key      = isset($_GET['key']) ? wc_clean(wp_unslash((string) $_GET['key'])) : '';
+		$order_id = isset($_GET['order_id']) ? absint(wp_unslash((string) $_GET['order_id'])) : 0;
+		$key      = isset($_GET['key']) ? sanitize_text_field(wp_unslash((string) $_GET['key'])) : '';
+
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		if ($order_id <= 0 || $key === '') {
 			return;

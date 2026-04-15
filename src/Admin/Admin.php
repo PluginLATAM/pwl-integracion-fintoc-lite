@@ -55,9 +55,11 @@ final class Admin
 			return;
 		}
 
-		$input = isset($_POST[Options::OPTION_KEY]) && is_array($_POST[Options::OPTION_KEY])
-			? wp_unslash($_POST[Options::OPTION_KEY])
+		// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- multi-line read: sanitization is in sanitize_settings() per field.
+		$input = isset($_POST[ Options::OPTION_KEY ]) && is_array($_POST[ Options::OPTION_KEY ])
+			? wp_unslash($_POST[ Options::OPTION_KEY ])
 			: [];
+		// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		$clean = $this->sanitize_settings($input);
 		update_option(Options::OPTION_KEY, $clean, false);
@@ -216,25 +218,29 @@ final class Admin
 		echo '<div class="wrap">';
 		echo '<div class="wads">';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Components::* return escaped HTML.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- WpAdminDS Components::* return escaped HTML.
 		echo Components::page_header(__('PWL Fintoc integration', 'pwl-integracion-fintoc'), $ph_opts);
+		// phpcs:enable
 
 		echo '<div class="pwl-fintoc-main-stack">';
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only query flag after redirect from settings save (core pattern).
 		if (isset($_GET['settings-updated'])) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo Components::notice(
 				esc_html__('Settings saved.', 'pwl-integracion-fintoc'),
 				'success',
 			);
+			// phpcs:enable
 		}
 
 		if (!class_exists('WooCommerce')) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo Components::notice(
 				esc_html__('WooCommerce is inactive. Save keys here; enable Fintoc under WooCommerce → Payments when WC is active.', 'pwl-integracion-fintoc'),
 				'warning',
 			);
+			// phpcs:enable
 		} else {
 			$this->render_wc_checkout_status_panel();
 		}
@@ -377,7 +383,7 @@ final class Admin
 
 		echo '<div class="wads-stack wads-stack--lg">';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo Components::settings_section(
 			[
 				'title' => __('API keys', 'pwl-integracion-fintoc'),
@@ -386,7 +392,6 @@ final class Admin
 			],
 		);
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo Components::settings_section(
 			[
 				'title' => __('Recipient account (Chile direct deposit)', 'pwl-integracion-fintoc'),
@@ -394,6 +399,7 @@ final class Admin
 				'body'  => $recipient_body,
 			],
 		);
+		// phpcs:enable
 
 		if (defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro') {
 			$rest_url = rest_url('pwl-fintoc/v1/webhook');
@@ -420,7 +426,7 @@ final class Admin
 				],
 			];
 
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo Components::settings_section(
 				[
 					'title' => __('Webhooks (Pro)', 'pwl-integracion-fintoc'),
@@ -428,11 +434,13 @@ final class Admin
 					'rows'  => $webhook_rows,
 				],
 			);
+			// phpcs:enable
 		}
 
 		echo '<div class="wads-cluster" style="margin-top:8px">';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $save_btn;
+		// phpcs:enable
 		echo '</div>';
 
 		echo '</div>';
@@ -511,7 +519,7 @@ final class Admin
 			? __('Ready at checkout (check currency)', 'pwl-integracion-fintoc')
 			: __('Fintoc missing at checkout?', 'pwl-integracion-fintoc');
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo Components::card(
 			[
 				'title'    => $title,
@@ -520,6 +528,7 @@ final class Admin
 				'body'     => $list . $actions,
 			],
 		);
+		// phpcs:enable
 	}
 
 	private function render_pro_upgrade_card(): void
@@ -539,7 +548,7 @@ final class Admin
 
 		$body = $list;
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo Components::card(
 			[
 				'title'   => __('PWL Fintoc Pro', 'pwl-integracion-fintoc'),
@@ -553,5 +562,6 @@ final class Admin
 				),
 			],
 		);
+		// phpcs:enable
 	}
 }

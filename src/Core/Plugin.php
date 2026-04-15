@@ -55,6 +55,7 @@ final class Plugin
 
 	public function load_textdomain_on_init(): void
 	{
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- needed for local installs and load_textdomain_mofile fallback; .org also loads, explicit call is harmless.
 		load_plugin_textdomain('pwl-integracion-fintoc', false, dirname(plugin_basename(PWL_FINTOC_FILE)) . '/languages');
 	}
 
