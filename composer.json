@@ -1,0 +1,25 @@
+{
+	"name": "pluginlatam/pwl-integracion-fintoc",
+	"version": "1.0.0",
+	"description": "Integración WordPress/WooCommerce con Fintoc",
+	"type": "wordpress-plugin",
+	"license": "GPL-3.0-or-later",
+	"autoload": {
+		"psr-4": {
+			"PwlIntegracionFintoc\\": "src/"
+		}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/PluginLATAM/wp-admin-design-system"
+		}
+	],
+	"require": {
+		"php": ">=8.0",
+		"pwl/wp-admin-design-system": "^1.0"
+	},
+	"config": {
+		"optimize-autoloader": true
+	}
+}

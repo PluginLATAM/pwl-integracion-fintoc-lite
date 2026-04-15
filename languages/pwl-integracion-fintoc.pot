@@ -1,0 +1,550 @@
+# Copyright (C) 2026 PluginLATAM
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PWL Integración Fintoc 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pwl-integracion-fintoc\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-15T13:38:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: pwl-integracion-fintoc\n"
+
+#. Plugin Name of the plugin
+#: pwl-integracion-fintoc.php
+msgid "PWL Integración Fintoc"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: pwl-integracion-fintoc.php
+msgid "https://github.com/PluginLATAM"
+msgstr ""
+
+#. Description of the plugin
+#: pwl-integracion-fintoc.php
+msgid "Fintoc integration for WooCommerce payments and reconciliation."
+msgstr ""
+
+#. Author of the plugin
+#: pwl-integracion-fintoc.php
+msgid "PluginLATAM"
+msgstr ""
+
+#. Author URI of the plugin
+#: pwl-integracion-fintoc.php
+msgid "https://github.com/PluginLATAM"
+msgstr ""
+
+#: pwl-integracion-fintoc.php:38
+msgid "PWL Fintoc Pro cannot run while Lite is active. Deactivate Lite and keep only one edition."
+msgstr ""
+
+#: src/Admin/Admin.php:26
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Admin.php:139
+msgid "— Select institution —"
+msgstr ""
+
+#. translators: %s: institution_id stored in options but not in the current official list
+#: src/Admin/Admin.php:144
+#, php-format
+msgid "Unknown value (reselect): %s"
+msgstr ""
+
+#: src/Admin/Admin.php:158
+#: src/Admin/Admin.php:217
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: src/Admin/Admin.php:193
+#: src/Admin/Admin.php:194
+msgid "PWL Fintoc"
+msgstr ""
+
+#: src/Admin/Admin.php:224
+msgid "API keys, payout, and Pro webhooks."
+msgstr ""
+
+#: src/Admin/Admin.php:227
+msgid "Pro"
+msgstr ""
+
+#: src/Admin/Admin.php:234
+#: src/Integration/Gateway/Gateway_Fintoc.php:59
+msgid "PWL Fintoc integration"
+msgstr ""
+
+#: src/Admin/Admin.php:239
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Admin.php:249
+msgid "WooCommerce is inactive. Save keys here; enable Fintoc under WooCommerce → Payments when WC is active."
+msgstr ""
+
+#: src/Admin/Admin.php:256
+msgid "Save changes"
+msgstr ""
+
+#: src/Admin/Admin.php:260
+msgid "Test mode"
+msgstr ""
+
+#: src/Admin/Admin.php:261
+msgid "When on, uses the test secret key."
+msgstr ""
+
+#: src/Admin/Admin.php:264
+msgid "Use Fintoc test API keys"
+msgstr ""
+
+#: src/Admin/Admin.php:272
+msgid "Test secret key"
+msgstr ""
+
+#: src/Admin/Admin.php:273
+#: src/Admin/Admin.php:287
+msgid "%s from the Fintoc Dashboard (not the public pk_ key). Empty = keep saved value."
+msgstr ""
+
+#: src/Admin/Admin.php:286
+msgid "Live secret key"
+msgstr ""
+
+#: src/Admin/Admin.php:303
+msgid "Recipient bank account from WordPress"
+msgstr ""
+
+#: src/Admin/Admin.php:304
+msgid "Off: payout account is only in Fintoc (no bank fields). On: enter RUT, account, and bank; they are required and sent with each payment."
+msgstr ""
+
+#: src/Admin/Admin.php:307
+msgid "Send holder ID, account number, and bank from these settings"
+msgstr ""
+
+#: src/Admin/Admin.php:315
+msgid "Holder ID (RUT)"
+msgstr ""
+
+#: src/Admin/Admin.php:322
+msgid "Account number"
+msgstr ""
+
+#: src/Admin/Admin.php:329
+msgid "Account type"
+msgstr ""
+
+#: src/Admin/Admin.php:333
+msgid "Checking account"
+msgstr ""
+
+#: src/Admin/Admin.php:334
+msgid "Sight account (vista)"
+msgstr ""
+
+#: src/Admin/Admin.php:343
+msgid "Institution ID"
+msgstr ""
+
+#: src/Admin/Admin.php:344
+msgid "Chile institution code (Fintoc docs)."
+msgstr ""
+
+#: src/Admin/Admin.php:366
+msgid "API keys"
+msgstr ""
+
+#: src/Admin/Admin.php:367
+msgid "Server-side secret keys (sk_)."
+msgstr ""
+
+#: src/Admin/Admin.php:375
+msgid "Recipient account (Chile direct deposit)"
+msgstr ""
+
+#: src/Admin/Admin.php:376
+msgid "Turn on the toggle below only if WordPress must send RUT, account number, and bank to Fintoc."
+msgstr ""
+
+#: src/Admin/Admin.php:386
+msgid "Webhook signing secret"
+msgstr ""
+
+#: src/Admin/Admin.php:387
+msgid "Dashboard → Webhooks. Empty = keep saved value."
+msgstr ""
+
+#: src/Admin/Admin.php:400
+msgid "Webhook URL"
+msgstr ""
+
+#: src/Admin/Admin.php:401
+#: src/Integration/Pro/WebhookDebugPage.php:121
+msgid "Add in Fintoc with the same test/live mode as your keys."
+msgstr ""
+
+#: src/Admin/Admin.php:409
+msgid "Webhooks (Pro)"
+msgstr ""
+
+#: src/Admin/Admin.php:410
+msgid "Signature check and request log."
+msgstr ""
+
+#: src/Admin/Admin.php:526
+#: src/Admin/Admin.php:529
+msgid "OK"
+msgstr ""
+
+#: src/Admin/Admin.php:527
+msgid "Missing"
+msgstr ""
+
+#: src/Admin/Admin.php:530
+msgid "Incomplete"
+msgstr ""
+
+#: src/Admin/Admin.php:532
+msgid "Enabled"
+msgstr ""
+
+#: src/Admin/Admin.php:533
+msgid "Off"
+msgstr ""
+
+#: src/Admin/Admin.php:539
+msgid "Secret key for the active mode (paste once if the field was empty)."
+msgstr ""
+
+#: src/Admin/Admin.php:543
+msgid "Payout: holder ID (RUT), account number, and bank in the recipient section above."
+msgstr ""
+
+#: src/Admin/Admin.php:547
+msgid "WooCommerce → Payments → Fintoc: enable the gateway."
+msgstr ""
+
+#: src/Admin/Admin.php:553
+msgid "Checkout: CLP and MXN only."
+msgstr ""
+
+#: src/Admin/Admin.php:557
+msgid "All payment methods"
+msgstr ""
+
+#: src/Admin/Admin.php:558
+msgid "Fintoc in WooCommerce"
+msgstr ""
+
+#: src/Admin/Admin.php:562
+msgid "Ready at checkout (check currency)"
+msgstr ""
+
+#: src/Admin/Admin.php:563
+msgid "Fintoc missing at checkout?"
+msgstr ""
+
+#: src/Admin/Admin.php:569
+msgid "Keys here; enable the gateway in WooCommerce."
+msgstr ""
+
+#: src/Admin/Admin.php:580
+msgid "Automatic order updates via webhooks"
+msgstr ""
+
+#: src/Admin/Admin.php:581
+msgid "Webhook log and signature verification"
+msgstr ""
+
+#: src/Admin/Admin.php:582
+msgid "Refunds from WooCommerce admin"
+msgstr ""
+
+#: src/Admin/Admin.php:583
+msgid "Async handling of pending payments"
+msgstr ""
+
+#: src/Admin/Admin.php:596
+msgid "PWL Fintoc Pro"
+msgstr ""
+
+#: src/Admin/Admin.php:597
+msgid "Available in the Pro edition."
+msgstr ""
+
+#: src/Admin/Admin.php:601
+msgid "Learn about Pro"
+msgstr ""
+
+#: src/Core/Plugin.php:62
+msgid "Activate WooCommerce to use the Fintoc payment method."
+msgstr ""
+
+#: src/Integration/CheckoutReturn.php:69
+msgid "Fintoc: could not refresh checkout session status (API error)."
+msgstr ""
+
+#: src/Integration/CheckoutReturn.php:130
+msgid "Customer returned from Fintoc without completing payment."
+msgstr ""
+
+#: src/Integration/CheckoutReturn.php:134
+msgid "Payment was cancelled. You can try again or choose another payment method."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:23
+msgid "Fintoc"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:24
+msgid "Hosted checkout on Fintoc (available methods depend on your account)."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:51
+msgid "API secret & payout account"
+msgstr ""
+
+#. translators: %s: URL to plugin settings screen
+#: src/Integration/Gateway/Gateway_Fintoc.php:55
+#, php-format
+msgid "Keys and bank details: %s. Here: enable the method and checkout labels only."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:63
+msgid "Enable/Disable"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:65
+msgid "Enable Fintoc"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:69
+msgid "Title"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:71
+msgid "Shown at checkout."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:72
+#: assets/blocks/wc-payment-method-pwl-fintoc.js:33
+#: resources/blocks/wc-payment-method-pwl-fintoc.js:33
+msgid "Pay with Fintoc"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:76
+msgid "Description"
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:78
+msgid "Optional text under the title at checkout."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:135
+msgid "Fintoc only supports CLP and MXN for this integration."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:144
+msgid "Invalid order amount."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:238
+#: src/Integration/Gateway/Gateway_Fintoc.php:252
+msgid "Could not start Fintoc payment. Please try again or choose another payment method."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:263
+msgid "Awaiting Fintoc payment."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:282
+msgid "Refunds require Fintoc Pro."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:292
+msgid "No Fintoc payment intent on this order."
+msgstr ""
+
+#: src/Integration/Gateway/Gateway_Fintoc.php:305
+msgid "Refund request failed."
+msgstr ""
+
+#. translators: %1$s: reason
+#: src/Integration/Gateway/Gateway_Fintoc.php:313
+#, php-format
+msgid "Fintoc refund requested. Reason: %1$s"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:26
+#: src/Integration/Pro/WebhookDebugPage.php:107
+msgid "Fintoc webhook log"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:27
+msgid "Webhook log"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:38
+msgid "Not authorized."
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:63
+msgid "Log cleared."
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:76
+msgid "Clear log"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:81
+msgid "Clear all logged events?"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:88
+msgid "No events yet."
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:109
+msgid "Recent inbound webhooks."
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:118
+msgid "REST endpoint"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:120
+msgid "URL:"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:127
+msgid "Time"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:128
+msgid "Type"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:129
+msgid "Event ID"
+msgstr ""
+
+#: src/Integration/Pro/WebhookDebugPage.php:130
+msgid "Payload (preview)"
+msgstr ""
+
+#. translators: %s: webhook type
+#: src/Integration/Pro/WebhookHandler.php:172
+#, php-format
+msgid "Fintoc refund event: %s"
+msgstr ""
+
+#. translators: %s: payment intent id
+#: src/Order/OrderSync.php:41
+#, php-format
+msgid "Fintoc: payment succeeded (payment_intent %s)."
+msgstr ""
+
+#: src/Order/OrderSync.php:54
+msgid "Fintoc: payment failed or session expired."
+msgstr ""
+
+#: src/Order/OrderSync.php:64
+msgid "Fintoc: payment pending approval or further action."
+msgstr ""
+
+#. translators: %s: payment intent status
+#: src/Order/OrderSync.php:75
+#, php-format
+msgid "Fintoc: session finished with payment status %s."
+msgstr ""
+
+#: src/Settings/Options.php:71
+msgid "Banco Estado"
+msgstr ""
+
+#: src/Settings/Options.php:72
+msgid "Banco BCI"
+msgstr ""
+
+#: src/Settings/Options.php:73
+msgid "Banco BICE"
+msgstr ""
+
+#: src/Settings/Options.php:74
+msgid "Banco de Chile - Edwards - Citi"
+msgstr ""
+
+#: src/Settings/Options.php:75
+msgid "Banco Falabella"
+msgstr ""
+
+#: src/Settings/Options.php:76
+msgid "Banco Itaú"
+msgstr ""
+
+#: src/Settings/Options.php:77
+msgid "Banco Ripley"
+msgstr ""
+
+#: src/Settings/Options.php:78
+msgid "Banco Santander"
+msgstr ""
+
+#: src/Settings/Options.php:79
+msgid "Banco Consorcio"
+msgstr ""
+
+#: src/Settings/Options.php:80
+msgid "Scotiabank"
+msgstr ""
+
+#: src/Settings/Options.php:81
+msgid "Mercado Pago"
+msgstr ""
+
+#: src/Settings/Options.php:82
+msgid "Mach"
+msgstr ""
+
+#: src/Settings/Options.php:83
+msgid "Tenpo"
+msgstr ""
+
+#: src/Settings/Options.php:84
+msgid "Banco Security"
+msgstr ""
+
+#: src/Settings/Options.php:85
+msgid "Tapp"
+msgstr ""
+
+#: src/Settings/Options.php:86
+msgid "Banco Internacional"
+msgstr ""
+
+#: src/Settings/Options.php:87
+msgid "Coopeuch - Dale"
+msgstr ""
+
+#: src/Settings/Options.php:88
+msgid "Copec Pay"
+msgstr ""
+
+#: src/Settings/Options.php:89
+msgid "Prepago Los Heroes"
+msgstr ""
+
+#: src/Settings/Options.php:90
+msgid "BBVA"
+msgstr ""
+
+#: src/Settings/Options.php:91
+msgid "HSBC"
+msgstr ""

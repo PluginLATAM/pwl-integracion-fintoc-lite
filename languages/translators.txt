@@ -1,0 +1,21 @@
+Translation workflow (domain: pwl-integracion-fintoc)
+========================================================
+
+Source strings are English (US) msgids in PHP and JS. After pulling changes,
+regenerate the template:
+
+  wp i18n make-pot . languages/pwl-integracion-fintoc.pot \
+    --domain=pwl-integracion-fintoc \
+    --exclude=vendor,node_modules,assets/admin/css,releases,.playwright-mcp
+
+Bundled locale: Spanish (Chile) — pwl-integracion-fintoc-es_CL.po /
+pwl-integracion-fintoc-es_CL.mo (compile with: msgfmt -o
+pwl-integracion-fintoc-es_CL.mo pwl-integracion-fintoc-es_CL.po).
+
+For other locales, copy the POT to e.g. pwl-integracion-fintoc-es_ES.po, set
+the Language header, translate msgstr entries, and compile .mo files (msgfmt or
+Poedit). When msgids change, merge with msgmerge against the new POT.
+
+To refresh es_CL after editing the POT, run:
+  python3 tools/generate-es-cl-po.py
+  msgfmt -o languages/pwl-integracion-fintoc-es_CL.mo languages/pwl-integracion-fintoc-es_CL.po
