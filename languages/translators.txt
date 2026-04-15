@@ -17,5 +17,5 @@ the Language header, translate msgstr entries, and compile .mo files (msgfmt or
 Poedit). When msgids change, merge with msgmerge against the new POT.
 
 To refresh es_CL after editing the POT, run:
-  python3 tools/generate-es-cl-po.py
+  python3 scripts/generate-es-cl-po.py
   msgfmt -o languages/pwl-integracion-fintoc-es_CL.mo languages/pwl-integracion-fintoc-es_CL.po

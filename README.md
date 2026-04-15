@@ -4,6 +4,10 @@ Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](
 
 > **Aclaración:** este proyecto **no es Fintoc** ni está afiliado oficialmente a Fintoc. Es un complemento de terceros (**PluginLATAM / PWL**) que **solo integra** la API pública de Fintoc en WooCommerce. Soporte del complemento: repositorio y autores del plugin. Dudas sobre cuentas, contratos o el producto Fintoc: [Fintoc](https://fintoc.com/).
 
+**Documentación de integración:** [docs.fintoc.com — Welcome](https://docs.fintoc.com/docs/welcome)
+
+**Enlaces legales (Chile):** [Términos y condiciones](https://fintoc.com/cl/legal/terminos-y-condiciones) · [Política de privacidad](https://fintoc.com/cl/legal/politica-de-privacidad) · [Términos (pestaña desarrolladores)](https://fintoc.com/cl/legal/terminos-y-condiciones?tab=user-priv)
+
 **Stable tag:** 1.0.0
 
 ## Checklist antes de producción (Fintoc)

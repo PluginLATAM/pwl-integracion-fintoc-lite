@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       PWL Integración Fintoc
- * Plugin URI:        https://github.com/PluginLATAM
+ * Plugin URI:        https://github.com/PluginLATAM/pwl-integracion-fintoc-lite
  * Description:       Fintoc integration for WooCommerce payments and reconciliation.
  * Version:           1.0.0
  * Requires at least: 6.0

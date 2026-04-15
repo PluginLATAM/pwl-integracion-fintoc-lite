@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM"
+msgid "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
 msgstr ""
 
 #. Description of the plugin

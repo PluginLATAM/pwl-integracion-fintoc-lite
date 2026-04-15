@@ -18,10 +18,10 @@ msgstr ""
 #: pwl-integracion-fintoc.php
 msgid "PWL Integración Fintoc"
 msgstr "PWL Integración Fintoc"
-#. Plugin URI and Author URI of the plugin
+#. Plugin URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM"
-msgstr "https://github.com/PluginLATAM"
+msgid "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
+msgstr "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
 #. Description of the plugin
 #: pwl-integracion-fintoc.php
 msgid "Fintoc integration for WooCommerce payments and reconciliation."
@@ -30,6 +30,10 @@ msgstr "Integración con Fintoc para pagos y conciliación en WooCommerce."
 #: pwl-integracion-fintoc.php
 msgid "PluginLATAM"
 msgstr "PluginLATAM"
+#. Author URI of the plugin
+#: pwl-integracion-fintoc.php
+msgid "https://github.com/PluginLATAM"
+msgstr "https://github.com/PluginLATAM"
 #: pwl-integracion-fintoc.php:38
 msgid "PWL Fintoc Pro cannot run while Lite is active. Deactivate Lite and keep only one edition."
 msgstr "PWL Fintoc Pro no puede ejecutarse mientras Lite está activo. Desactiva Lite y mantén solo una edición."
