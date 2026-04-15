@@ -1,34 +1,36 @@
 # PWL Integración Fintoc (Lite)
 
-WordPress plugin: WooCommerce + [Fintoc](https://fintoc.com/) payments.
+Complemento para WordPress: WooCommerce + pagos con [Fintoc](https://fintoc.com/).
 
 **Stable tag:** 1.0.0
 
-## Go-live checklist (Fintoc)
+## Checklist antes de producción (Fintoc)
 
-1. **API keys:** switch off test mode and use live secret keys in **PWL Fintoc** settings.
-2. **Recipient account:** verify RUT, account number, type, and `institution_id` match your bank (see [Chile institution codes](https://docs.fintoc.com/reference/chile-institution-codes)).
-3. **WooCommerce currency:** store currency must be CLP or MXN for the gateway to be available.
-4. **Thank-you page (Lite):** ensure customers can reach the order-received page so the plugin can refresh the checkout session.
-5. **Webhooks (Pro):** in the Fintoc Dashboard, register endpoint `https://YOUR-DOMAIN/wp-json/pwl-fintoc/v1/webhook` (replace with your site URL), subscribe to payment events, and paste the **webhook signing secret** into the plugin. Use the same mode (test/live) as your API keys.
-6. **TLS:** site must use HTTPS for production webhooks.
-7. **Idempotency:** events are deduplicated by Fintoc event `id` in the local log table.
+1. **Claves API:** desactiva el modo de prueba y usa las claves secretas **en vivo** en los ajustes de **PWL Fintoc**.
+2. **Cuenta receptora:** comprueba que el RUT, el número de cuenta, el tipo y el `institution_id` coincidan con tu banco (ver [códigos de institución en Chile](https://docs.fintoc.com/reference/chile-institution-codes)).
+3. **Moneda en WooCommerce:** la tienda debe usar CLP o MXN para que el método de pago esté disponible.
+4. **Página de gracias (Lite):** asegúrate de que los clientes lleguen a la página de pedido recibido para que el complemento pueda actualizar la sesión de checkout.
+5. **Webhooks (Pro):** en el panel de Fintoc, registra el endpoint `https://TU-DOMINIO/wp-json/pwl-fintoc/v1/webhook` (sustituye por la URL de tu sitio), suscríbete a eventos de pago y pega el **secreto de firma del webhook** en el complemento. Usa el mismo modo (prueba / producción) que tus claves API.
+6. **TLS:** en producción, el sitio debe usar HTTPS para los webhooks.
+7. **Idempotencia:** los eventos se deduplican por el `id` del evento de Fintoc en la tabla de registro local.
 
 ## Lite vs Pro
 
-| Feature | Lite | Pro |
-|--------|------|-----|
-| Checkout session + redirect | Yes | Yes |
-| Confirm on order-received (API refresh) | Yes | Yes |
-| Signed webhooks + order updates | No | Yes |
-| Webhook debug log | No | Yes |
-| Refunds from WooCommerce | No | Yes |
+| Funcionalidad | Lite | Pro |
+|---------------|------|-----|
+| Sesión de checkout + redirección | Sí | Sí |
+| Confirmación en pedido recibido (actualización vía API) | Sí | Sí |
+| Webhooks firmados + actualización de pedidos | No | Sí |
+| Registro de depuración de webhooks | No | Sí |
+| Devoluciones desde WooCommerce | No | Sí |
 
 ## Build
 
-From the plugin root:
+Desde la raíz del complemento:
 
 ```bash
 npm run build:lite   # releases/lite/pwl-integracion-fintoc/
 npm run build:pro    # releases/pro/pwl-integracion-fintoc-pro/
 ```
+
+`build:lite` copia los archivos actualizados **dentro de** `releases/lite/pwl-integracion-fintoc/` y **no modifica** un **`.git`** que ya exista (clona o inicializa el repo Lite de GitHub ahí una vez).
