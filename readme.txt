@@ -4,7 +4,7 @@ Tags: woocommerce, fintoc, payments, chile, transfer
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.2
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,12 +66,11 @@ This plugin connects to the **Fintoc API** at `https://api.fintoc.com` over HTTP
 
 == Changelog ==
 
-= 1.0.2 =
-* Developer: extension hooks renamed to `pwlintegracionfintoc_*` (lowercased PHP namespace `PwlIntegracionFintoc` as one word). WordPress.org Plugin Check derives allowed hook prefixes from your codebase via its prefix scanner; the underscore-separated slug form (`pwl_integracion_fintoc_*`) did not match those detected prefixes. If you integrated on `pwl_integracion_fintoc_*` (1.0.1) or `pwl_fintoc_*` (1.0.0), update hook names accordingly.
-
 = 1.0.1 =
-* Developer: extension hooks were renamed toward a long slug-style prefix (`pwl_integracion_fintoc_*`). Superseded by 1.0.2 for Plugin Check compatibility.
+* Developer: extension hooks use the prefix `pwlintegracionfintoc_*` (lowercased PHP namespace; matches WordPress.org Plugin Check prefix scanner).
+* Developer: added `phpcs.xml.dist` (ValidHookName + PrefixAllGlobals); run PHPCS with WPCS locally (coding-standard packages are not shipped in `vendor/`).
 
 = 1.0.0 =
 * Initial release: WooCommerce gateway, Lite return-path confirmation, Pro webhooks and refunds.
-* Pro: transaction snapshot and order metabox, refresh payment intent from admin, customer order summary, expanded webhook types (session expired, more payment_intent states, payout/transfer notes when correlatable), extension hooks — see 1.0.1 / 1.0.2 changelog for current hook names.
+* Pro: transaction snapshot and order metabox, refresh payment intent from admin, customer order summary, expanded webhook types (session expired, more payment_intent states, payout/transfer notes when correlatable).
+* Developer: extension hooks use the prefix `pwlintegracionfintoc_*`.

@@ -3,7 +3,7 @@
  * Plugin Name:       PWL Integración Fintoc
  * Plugin URI:        https://github.com/PluginLATAM/pwl-integracion-fintoc-lite
  * Description:       Fintoc integration for WooCommerce payments and reconciliation.
- * Version:           1.0.2
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Tested up to:      6.9
  * Requires PHP:      8.0
@@ -39,7 +39,7 @@ if (defined('PWL_FINTOC_VERSION')) {
 }
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- PWL_FINTOC_* is the project-wide constant prefix.
-define('PWL_FINTOC_VERSION', '1.0.2');
+define('PWL_FINTOC_VERSION', '1.0.1');
 define('PWL_FINTOC_EDITION', 'lite'); // injected by build.js
 define('PWL_FINTOC_FILE', __FILE__);
 define('PWL_FINTOC_DIR', plugin_dir_path(__FILE__));

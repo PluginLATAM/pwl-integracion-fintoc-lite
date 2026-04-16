@@ -8,7 +8,7 @@ Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](
 
 **Enlaces legales (Chile):** [Términos y condiciones](https://fintoc.com/cl/legal/terminos-y-condiciones) · [Política de privacidad](https://fintoc.com/cl/legal/politica-de-privacidad) · [Términos (pestaña desarrolladores)](https://fintoc.com/cl/legal/terminos-y-condiciones?tab=user-priv)
 
-**Stable tag:** 1.0.0
+**Stable tag:** 1.0.1
 
 ## Checklist antes de producción (Fintoc)
 
@@ -29,3 +29,14 @@ Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](
 | Webhooks firmados + actualización de pedidos | No | Sí |
 | Registro de depuración de webhooks | No | Sí |
 | Devoluciones desde WooCommerce | No | Sí |
+
+## Changelog
+
+### 1.0.1
+
+- **Desarrolladores:** hooks de extensión con prefijo `pwlintegracionfintoc_*` (namespace PHP en minúsculas; compatible con Plugin Check en WordPress.org).
+- **Desarrolladores:** se añadió `phpcs.xml.dist`; PHPCS + WPCS en local (no se incluyen en `vendor/` del paquete).
+
+### 1.0.0
+
+- Versión inicial: pasarela WooCommerce, confirmación Lite en página de gracias, webhooks y devoluciones Pro, herramientas de pedido y snapshot de transacción en Pro.
