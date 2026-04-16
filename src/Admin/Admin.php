@@ -113,7 +113,7 @@ final class Admin
 			$clean['live_secret_key'] = $prev['live_secret_key'];
 		}
 
-		return apply_filters('pwl_fintoc_sanitize_settings', $clean, $input, $prev);
+		return apply_filters('pwl_integracion_fintoc_sanitize_settings', $clean, $input, $prev);
 	}
 
 	/**
@@ -216,7 +216,7 @@ final class Admin
 		$opt = Options::OPTION_KEY;
 
 		$ph_opts = apply_filters(
-			'pwl_fintoc_page_header_options',
+			'pwl_integracion_fintoc_page_header_options',
 			[
 				'desc' => __('API keys, recipient account, and Pro webhooks (with setup guidance).', 'pwl-integracion-fintoc'),
 			],
@@ -408,7 +408,7 @@ final class Admin
 		);
 		// phpcs:enable
 
-		do_action('pwl_fintoc_settings_after_recipient', $o, $opt);
+		do_action('pwl_integracion_fintoc_settings_after_recipient', $o, $opt);
 
 		echo '<div class="wads-cluster" style="margin-top:8px">';
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -419,7 +419,7 @@ final class Admin
 		echo '</div>';
 		echo '</form>';
 
-		do_action('pwl_fintoc_settings_after_form');
+		do_action('pwl_integracion_fintoc_settings_after_form');
 
 		echo '</div>';
 
