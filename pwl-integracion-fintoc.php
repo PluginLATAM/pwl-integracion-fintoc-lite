@@ -18,8 +18,12 @@
 
 defined('ABSPATH') || exit;
 
-// If Lite and Pro are both active, only the first loaded copy bootstraps (same namespace). No scanning of active_plugins.
-if (class_exists(\PwlIntegracionFintoc\Core\Plugin::class, false)) {
+/*
+ * If Lite + Pro are both active, two main files run. Do not use class_exists(…, false): Core\Plugin
+ * is only autoloaded later, so the second copy would miss the duplicate and would redefine constants.
+ * Rely on PWL_FINTOC_VERSION (defined before autoload in the first loaded copy).
+ */
+if (defined('PWL_FINTOC_VERSION')) {
 	add_action(
 		'admin_notices',
 		static function (): void {
@@ -46,13 +50,18 @@ define('PWL_FINTOC_GATEWAY_CLASS', \PwlIntegracionFintoc\Integration\Gateway\Gat
 
 require_once PWL_FINTOC_DIR . 'vendor/autoload.php';
 
+
+
 add_action(
 	'plugins_loaded',
 	[\PwlIntegracionFintoc\Integration\Lite\LiteAdminBootstrap::class, 'register_hooks'],
 	9
 );
 
+/*PWL_FINTOC_REGISTER_ACTIVATION*/
 register_activation_hook(__FILE__, ['PwlIntegracionFintoc\Core\Activator', 'activate']);
+/*END PWL_FINTOC_REGISTER_ACTIVATION*/
+
 register_deactivation_hook(__FILE__, ['PwlIntegracionFintoc\Core\Deactivator', 'deactivate']);
 
 add_action(

@@ -56,9 +56,9 @@ msgstr "No tienes permiso para acceder a esta página."
 #: src/Admin/Admin.php:194
 msgid "PWL Fintoc"
 msgstr "PWL Fintoc"
-#: src/Admin/Admin.php:224
-msgid "API keys, payout, and Pro webhooks."
-msgstr "Claves API, abonos y webhooks Pro."
+#: src/Admin/Admin.php:221
+msgid "API keys, recipient account, and Pro webhooks (with setup guidance)."
+msgstr "Claves API, cuenta receptora y webhooks Pro (con guía de configuración)."
 #: src/Admin/Admin.php:227
 msgid "Pro"
 msgstr "Pro"
@@ -81,6 +81,9 @@ msgstr "Modo de prueba"
 #: src/Admin/Admin.php:261
 msgid "When on, uses the test secret key."
 msgstr "Si está activo, usa la clave secreta de prueba."
+#: src/Integration/Pro/WebhookDebugPage.php
+msgid "Live mode"
+msgstr "Modo en vivo"
 #: src/Admin/Admin.php:264
 msgid "Use Fintoc test API keys"
 msgstr "Usar claves API de prueba de Fintoc"
@@ -136,25 +139,24 @@ msgstr "Cuenta receptora (abono directo Chile)"
 #: src/Admin/Admin.php:376
 msgid "Turn on the toggle below only if WordPress must send RUT, account number, and bank to Fintoc."
 msgstr "Activa el interruptor de abajo solo si WordPress debe enviar RUT, número de cuenta e institución a Fintoc."
-#: src/Admin/Admin.php:386
+#: src/Integration/Pro/AdminProUi.php:52
 msgid "Webhook signing secret"
 msgstr "Secreto de firma del webhook"
-#: src/Admin/Admin.php:387
-msgid "Dashboard → Webhooks. Empty = keep saved value."
-msgstr "Panel → Webhooks. Vacío = mantener la guardada."
-#: src/Admin/Admin.php:400
-msgid "Webhook URL"
-msgstr "URL del webhook"
-#: src/Admin/Admin.php:401
-#: src/Integration/Pro/WebhookDebugPage.php:121
-msgid "Add in Fintoc with the same test/live mode as your keys."
-msgstr "Añádela en Fintoc con el mismo modo prueba/en vivo que tus claves."
-#: src/Admin/Admin.php:409
+#: src/Integration/Pro/AdminProUi.php:53
+msgid "Shown once in the Fintoc Dashboard when you create the webhook endpoint. Used to verify the Fintoc-Signature header. Leave empty to keep the saved value."
+msgstr "Se muestra una sola vez en el panel de Fintoc al crear el endpoint del webhook. Sirve para verificar la cabecera Fintoc-Signature. Déjalo vacío para conservar el valor guardado."
+#: src/Integration/Pro/AdminProUi.php:66
+msgid "Webhook URL (paste in Fintoc)"
+msgstr "URL del webhook (pegar en Fintoc)"
+#: src/Integration/Pro/AdminProUi.php:67
+msgid "Create the endpoint in test or live mode to match your API keys. Use the Copy button on the Webhook log screen if you need the URL elsewhere."
+msgstr "Crea el endpoint en modo de prueba o en vivo para que coincida con tus claves API. Usa el botón Copiar en la pantalla Registro de webhooks si necesitas la URL en otro lugar."
+#: src/Integration/Pro/AdminProUi.php:75
 msgid "Webhooks (Pro)"
 msgstr "Webhooks (Pro)"
-#: src/Admin/Admin.php:410
-msgid "Signature check and request log."
-msgstr "Verificación de firma y registro de peticiones."
+#: src/Integration/Pro/AdminProUi.php:76
+msgid "Credentials and endpoint URL for inbound events from Fintoc."
+msgstr "Credenciales y URL del endpoint para eventos entrantes desde Fintoc."
 #: src/Admin/Admin.php:526
 #: src/Admin/Admin.php:529
 msgid "OK"
@@ -198,12 +200,12 @@ msgstr "¿No ves Fintoc en el checkout?"
 #: src/Admin/Admin.php:569
 msgid "Keys here; enable the gateway in WooCommerce."
 msgstr "Las claves van aquí; activa el método en WooCommerce."
-#: src/Admin/Admin.php:580
-msgid "Automatic order updates via webhooks"
-msgstr "Actualización automática de pedidos vía webhooks"
-#: src/Admin/Admin.php:581
-msgid "Webhook log and signature verification"
-msgstr "Registro de webhooks y verificación de firma"
+#: src/Integration/Lite/LiteAdminBootstrap.php:23
+msgid "Order updates when Fintoc sends payment events (no thank-you page required)"
+msgstr "Actualización de pedidos cuando Fintoc envía eventos de pago (sin depender de la página de gracias)"
+#: src/Integration/Lite/LiteAdminBootstrap.php:24
+msgid "Signed webhooks, debug event log, and clearer setup guidance in settings"
+msgstr "Webhooks firmados, registro de depuración y guía de configuración más clara en ajustes"
 #: src/Admin/Admin.php:582
 msgid "Refunds from WooCommerce admin"
 msgstr "Devoluciones desde el administrador de WooCommerce"
@@ -317,15 +319,51 @@ msgstr "¿Borrar todos los eventos registrados?"
 #: src/Integration/Pro/WebhookDebugPage.php:88
 msgid "No events yet."
 msgstr "Aún no hay eventos."
-#: src/Integration/Pro/WebhookDebugPage.php:109
-msgid "Recent inbound webhooks."
-msgstr "Webhooks entrantes recientes."
-#: src/Integration/Pro/WebhookDebugPage.php:118
-msgid "REST endpoint"
-msgstr "Endpoint REST"
-#: src/Integration/Pro/WebhookDebugPage.php:120
-msgid "URL:"
-msgstr "URL:"
+#: src/Integration/Pro/WebhookDebugPage.php:101
+msgid "Copy webhook URL"
+msgstr "Copiar URL del webhook"
+#: src/Integration/Pro/WebhookDebugPage.php:108
+msgid "Copy webhook URL to clipboard"
+msgstr "Copiar URL del webhook al portapapeles"
+#: src/Integration/Pro/WebhookDebugPage.php:133
+msgid "Your webhook endpoint"
+msgstr "Tu endpoint de webhook"
+#. translators: %s: translated label for test or live API mode.
+#: src/Integration/Pro/WebhookDebugPage.php:137
+#, php-format
+msgid "Use the same Fintoc Dashboard environment as this site (%s)."
+msgstr "Usa el mismo entorno del panel de Fintoc que este sitio (%s)."
+#: src/Integration/Pro/WebhookDebugPage.php:145
+msgid "Paste this URL when creating the webhook in the Fintoc Dashboard. Fintoc sends POST requests here with a Fintoc-Signature header."
+msgstr "Pega esta URL al crear el webhook en el panel de Fintoc. Fintoc envía aquí solicitudes POST con la cabecera Fintoc-Signature."
+#. translators: 1–6: HTML anchor tags wrapping three Fintoc documentation link labels.
+#: src/Integration/Pro/WebhookDebugPage.php:159
+#, php-format
+msgid "%1$sValidating signatures%2$s · %3$sCreating an endpoint%4$s · %5$sBest practices%6$s"
+msgstr "%1$sValidación de firmas%2$s · %3$sCrear un endpoint%4$s · %5$sBuenas prácticas%6$s"
+#: src/Integration/Pro/WebhookDebugPage.php:179
+msgid "About this log"
+msgstr "Acerca de este registro"
+#: src/Integration/Pro/WebhookDebugPage.php:182
+msgid "This list is for troubleshooting. Payloads may contain payment-related data—only clear it when you understand retention needs in your organization."
+msgstr "Esta lista es para diagnóstico. Las cargas útiles pueden incluir datos de pagos: bórrala solo si conoces las necesidades de retención de tu organización."
+#: src/Integration/Pro/WebhookDebugPage.php:188
+msgid "Fintoc documentation"
+msgstr "Documentación de Fintoc"
+#: src/Integration/Pro/WebhookDebugPage.php:194
+msgid "Open PWL Fintoc settings"
+msgstr "Abrir ajustes de PWL Fintoc"
+#: src/Integration/Pro/WebhookDebugPage.php:206
+msgid "Recent signed events received from Fintoc. Use it to confirm delivery and inspect payloads when debugging."
+msgstr "Eventos firmados recientes recibidos desde Fintoc. Úsalo para confirmar la entrega y revisar las cargas útiles al depurar."
+#: src/Admin/Admin.php:203
+msgctxt "Feedback after copying the webhook URL"
+msgid "Copied!"
+msgstr "¡Copiado!"
+#: src/Admin/Admin.php:204
+msgctxt "Alert when clipboard is unavailable"
+msgid "Could not copy to clipboard."
+msgstr "No se pudo copiar al portapapeles."
 #: src/Integration/Pro/WebhookDebugPage.php:127
 msgid "Time"
 msgstr "Hora"
@@ -338,6 +376,58 @@ msgstr "ID de evento"
 #: src/Integration/Pro/WebhookDebugPage.php:130
 msgid "Payload (preview)"
 msgstr "Carga útil (vista previa)"
+#: src/Integration/Pro/AdminProUi.php:88
+msgid "Events this plugin handles"
+msgstr "Eventos que gestiona este complemento"
+#: src/Integration/Pro/AdminProUi.php:92
+msgid "Fintoc notifies your site when payments and related objects change. That lets WooCommerce update orders even if the customer never returns to the thank-you page, and surface async states (pending, rejected, expired) and refund activity."
+msgstr "Fintoc avisa a tu sitio cuando cambian los pagos y objetos relacionados. Así WooCommerce puede actualizar pedidos aunque el cliente no vuelva a la página de gracias, y reflejar estados asíncronos (pendiente, rechazado, expirado) y actividad de devoluciones."
+#: src/Integration/Pro/AdminProUi.php:98
+msgid "Setup in three steps"
+msgstr "Configuración en tres pasos"
+#: src/Integration/Pro/AdminProUi.php:103
+msgid "In the Fintoc Dashboard, create a webhook endpoint whose URL matches the field below (same test or live mode as your secret API key)."
+msgstr "En el panel de Fintoc, crea un endpoint de webhook cuya URL coincida con el campo de abajo (mismo modo de prueba o en vivo que tu clave API secreta)."
+#. translators: %s: localized title of the “Events this plugin handles” section.
+#: src/Integration/Pro/AdminProUi.php:110
+#, php-format
+msgid "Subscribe to the events you need. The list under “%s” shows what is processed when Fintoc can link data to a WooCommerce order."
+msgstr "Suscríbete a los eventos que necesites. La lista bajo «%s» muestra qué se procesa cuando Fintoc puede vincular datos a un pedido de WooCommerce."
+#: src/Integration/Pro/AdminProUi.php:117
+msgid "Paste the signing secret from Fintoc into the field below so requests can be verified."
+msgstr "Pega en el campo de abajo el secreto de firma de Fintoc para poder verificar las solicitudes."
+#. translators: 1: opening anchor 2: closing, 3: opening anchor 4: closing, 5: opening anchor 6: closing
+#: src/Integration/Pro/AdminProUi.php:128
+#, php-format
+msgid "%1$sHow Fintoc signs webhooks%2$s · %3$sCreate a webhook endpoint (API)%4$s · %5$sWebhook best practices%6$s"
+msgstr "%1$sCómo firma Fintoc los webhooks%2$s · %3$sCrear un endpoint de webhook (API)%4$s · %5$sBuenas prácticas de webhooks%6$s"
+#: src/Integration/Pro/AdminProUi.php:151
+msgid "Updates the order when the customer completes checkout (when the session maps to an order)."
+msgstr "Actualiza el pedido cuando el cliente completa el checkout (si la sesión corresponde a un pedido)."
+#: src/Integration/Pro/AdminProUi.php:157
+msgid "Syncs session state if checkout expires before payment (skips if the order is already paid)."
+msgstr "Sincroniza el estado de la sesión si el checkout expira antes del pago (no aplica si el pedido ya está pagado)."
+#: src/Integration/Pro/AdminProUi.php:163
+msgid "succeeded, pending, failed, rejected, expired, requires_action: updates the order from the payment intent when it can be matched."
+msgstr "succeeded, pending, failed, rejected, expired, requires_action: actualiza el pedido desde la intención de pago cuando se puede emparejar."
+#: src/Integration/Pro/AdminProUi.php:169
+msgid "succeeded, failed, in_progress: adds an order note with refund status when tied to a payment intent on the order."
+msgstr "succeeded, failed, in_progress: añade una nota al pedido con el estado de la devolución cuando está vinculada a la intención de pago."
+#: src/Integration/Pro/AdminProUi.php:175
+msgid "created, succeeded, canceled, returned: adds an order note when the payload can be linked to an order."
+msgstr "created, succeeded, canceled, returned: añade una nota al pedido cuando la carga útil se puede vincular a un pedido."
+#: src/Integration/Pro/AdminProUi.php:181
+msgid "Adds an order note when the transfer can be linked to an order (metadata or payment intent)."
+msgstr "Añade una nota al pedido cuando la transferencia se puede vincular a un pedido (metadatos o intención de pago)."
+#: src/Integration/Pro/AdminProUi.php:189
+msgid "Other event types are acknowledged but ignored. Duplicate event IDs are not processed twice."
+msgstr "Otros tipos de evento se reconocen pero se ignoran. Los ID de evento duplicados no se procesan dos veces."
+#: src/Integration/Pro/AdminProUi.php:196
+msgid "Why webhooks"
+msgstr "Para qué sirven los webhooks"
+#: src/Integration/Pro/AdminProUi.php:197
+msgid "Automatic order sync and operational visibility from Fintoc"
+msgstr "Sincronización automática de pedidos y visibilidad operativa desde Fintoc"
 #. translators: %s: webhook type
 #: src/Integration/Pro/WebhookHandler.php:172
 #, php-format

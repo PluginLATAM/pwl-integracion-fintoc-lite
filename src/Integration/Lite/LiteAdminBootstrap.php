@@ -20,8 +20,8 @@ final class LiteAdminBootstrap
 	{
 		$url      = defined('PWL_FINTOC_PRO_URL') ? PWL_FINTOC_PRO_URL : 'https://github.com/PluginLATAM';
 		$features = [
-			__('Automatic order updates via webhooks', 'pwl-integracion-fintoc'),
-			__('Webhook log and signature verification', 'pwl-integracion-fintoc'),
+			__('Order updates when Fintoc sends payment events (no thank-you page required)', 'pwl-integracion-fintoc'),
+			__('Signed webhooks, debug event log, and clearer setup guidance in settings', 'pwl-integracion-fintoc'),
 			__('Refunds from WooCommerce admin', 'pwl-integracion-fintoc'),
 			__('Async handling of pending payments', 'pwl-integracion-fintoc'),
 		];

@@ -169,7 +169,11 @@ final class Admin
 
 	public function enqueue_assets(string $hook): void
 	{
-		if (!str_contains($hook, 'pwl-integracion-fintoc')) {
+		// Submenu pages use hooks like `pwl-integracion-fintoc_page_pwl-fintoc-webhook-log`; include slug explicitly for safety across WP versions.
+		if (
+			! str_contains($hook, 'pwl-integracion-fintoc')
+			&& ! str_contains($hook, 'pwl-fintoc-webhook-log')
+		) {
 			return;
 		}
 
@@ -191,6 +195,15 @@ final class Admin
 			PWL_FINTOC_VERSION,
 			true
 		);
+
+		wp_localize_script(
+			'pwl-fintoc-admin',
+			'pwlFintocAdmin',
+			[
+				'copied'     => _x( 'Copied!', 'Feedback after copying the webhook URL', 'pwl-integracion-fintoc' ),
+				'copyFailed' => _x( 'Could not copy to clipboard.', 'Alert when clipboard is unavailable', 'pwl-integracion-fintoc' ),
+			]
+		);
 	}
 
 	public function render_settings(): void
@@ -205,7 +218,7 @@ final class Admin
 		$ph_opts = apply_filters(
 			'pwl_fintoc_page_header_options',
 			[
-				'desc' => __('API keys, payout, and Pro webhooks.', 'pwl-integracion-fintoc'),
+				'desc' => __('API keys, recipient account, and Pro webhooks (with setup guidance).', 'pwl-integracion-fintoc'),
 			],
 		);
 
