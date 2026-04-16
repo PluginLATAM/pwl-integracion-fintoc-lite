@@ -109,7 +109,7 @@ final class OrderSync
 		 * @param array<string, mixed> $session Session array (possibly synthetic).
 		 * @param array<string, mixed>|null $intent Payment intent if present.
 		 */
-		do_action('pwl_integracion_fintoc_after_session_applied', $order, $session, $intent);
+		do_action('pwlintegracionfintoc_after_session_applied', $order, $session, $intent);
 	}
 
 	/**

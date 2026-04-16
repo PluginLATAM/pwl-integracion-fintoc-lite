@@ -13,7 +13,7 @@ final class LiteAdminBootstrap
 {
 	public static function register_hooks(): void
 	{
-		add_action('pwl_integracion_fintoc_settings_after_form', [self::class, 'render_upgrade_card']);
+		add_action('pwlintegracionfintoc_settings_after_form', [self::class, 'render_upgrade_card']);
 	}
 
 	public static function render_upgrade_card(): void
