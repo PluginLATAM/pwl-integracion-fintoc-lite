@@ -3,6 +3,7 @@
 namespace PwlIntegracionFintoc\Admin;
 
 use PwlIntegracionFintoc\Api\Client;
+use PwlIntegracionFintoc\Core\DistributionUrls;
 use PwlIntegracionFintoc\Settings\Options;
 use UserDOMP\WpAdminDS\Components;
 
@@ -216,7 +217,16 @@ final class Dashboard
 
 	private static function render_lite_pro_banner(): void
 	{
-		$url = defined('PWL_FINTOC_PRO_URL') ? PWL_FINTOC_PRO_URL : 'https://github.com/PluginLATAM';
+		$url        = DistributionUrls::pro_product_url();
+		$author_url = DistributionUrls::author_url();
+
+		/**
+		 * Fires before the Lite dashboard Pro promo block.
+		 *
+		 * @param string $pro_product_url Pro product page URL.
+		 * @param string $author_url      Vendor / author site URL.
+		 */
+		do_action('pwlintegracionfintoc_lite_dashboard_pro_banner_before', $url, $author_url);
 
 		$col_a = [
 			__('Order updates from Fintoc when the customer does not return to your site', 'pwl-integracion-fintoc'),
@@ -254,11 +264,24 @@ final class Dashboard
 		echo '<p class="pwl-fintoc-dash-pro-cta__note">'
 			. esc_html__('Plans and trials open in a new tab.', 'pwl-integracion-fintoc')
 			. '</p>';
+		echo '<p class="pwl-fintoc-dash-pro-cta__actions">';
 		echo '<a class="button button-primary pwl-fintoc-dash-pro-cta__btn" href="' . esc_url($url) . '" target="_blank" rel="noopener noreferrer">'
-			. esc_html__('View Pro', 'pwl-integracion-fintoc')
+			. esc_html__('View Pro plans', 'pwl-integracion-fintoc')
 			. '</a>';
+		echo '<a class="button button-secondary pwl-fintoc-dash-pro-cta__btn pwl-fintoc-dash-pro-cta__btn--secondary" href="' . esc_url($author_url) . '" target="_blank" rel="noopener noreferrer">'
+			. esc_html__('Plugin Wordpress LATAM', 'pwl-integracion-fintoc')
+			. '</a>';
+		echo '</p>';
 		echo '</div>';
 		echo '</section>';
+
+		/**
+		 * Fires after the Lite dashboard Pro promo block.
+		 *
+		 * @param string $pro_product_url Pro product page URL.
+		 * @param string $author_url      Vendor / author site URL.
+		 */
+		do_action('pwlintegracionfintoc_lite_dashboard_pro_banner_after', $url, $author_url);
 	}
 
 	private static function count_paid_fintoc_orders_since(int $days): int

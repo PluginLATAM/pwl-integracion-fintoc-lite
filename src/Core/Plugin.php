@@ -29,6 +29,7 @@ final class Plugin
 			$this->boot(\PwlIntegracionFintoc\Integration\Pro\LicenseBootstrap::class);
 			if (class_exists(\PwlIntegracionFintoc\Integration\Pro\ProFeatures::class)) {
 				\PwlIntegracionFintoc\Integration\Pro\ProFeatures::silence_stale_pro_runtime();
+				\PwlIntegracionFintoc\Integration\Pro\ProFeatures::register_guard_hooks();
 			}
 		}
 

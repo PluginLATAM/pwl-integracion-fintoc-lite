@@ -20,8 +20,8 @@ msgid "PWL Integración Fintoc"
 msgstr "PWL Integración Fintoc"
 #. Plugin URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
-msgstr "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
+msgid "https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/"
+msgstr "https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/"
 #. Description of the plugin
 #: pwl-integracion-fintoc.php
 msgid "Fintoc integration for WooCommerce payments and reconciliation."
@@ -32,8 +32,8 @@ msgid "PluginLATAM"
 msgstr "PluginLATAM"
 #. Author URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM"
-msgstr "https://github.com/PluginLATAM"
+msgid "https://pluginwordpresslatam.cl/"
+msgstr "https://pluginwordpresslatam.cl/"
 #: pwl-integracion-fintoc.php:38
 msgid "PWL Fintoc Pro cannot run while Lite is active. Deactivate Lite and keep only one edition."
 msgstr "PWL Fintoc Pro no puede ejecutarse mientras Lite está activo. Desactiva Lite y mantén solo una edición."
@@ -219,9 +219,12 @@ msgstr "PWL Fintoc Pro"
 #: src/Admin/Admin.php:597
 msgid "Available in the Pro edition."
 msgstr "Disponible en la edición Pro."
-#: src/Admin/Admin.php:601
-msgid "Learn about Pro"
-msgstr "Más información sobre Pro"
+#: src/Integration/Lite/LiteAdminBootstrap.php
+msgid "Plugin Wordpress LATAM — more WooCommerce integrations"
+msgstr "Plugin Wordpress LATAM — más integraciones para WooCommerce"
+#: src/Integration/Lite/LiteAdminBootstrap.php src/Admin/Dashboard.php
+msgid "View Pro plans"
+msgstr "Ver planes Pro"
 #: src/Core/Plugin.php:62
 msgid "Activate WooCommerce to use the Fintoc payment method."
 msgstr "Activa WooCommerce para usar Fintoc."
@@ -598,9 +601,9 @@ msgstr "Sácale más partido a Fintoc con Pro"
 #: src/Admin/Dashboard.php:225
 msgid "Plans and trials open in a new tab."
 msgstr "Planes y períodos de prueba: se abren en otra pestaña."
-#: src/Admin/Dashboard.php:228
-msgid "View Pro"
-msgstr "Ver Pro"
+#: src/Admin/Dashboard.php
+msgid "Plugin Wordpress LATAM"
+msgstr "Plugin Wordpress LATAM"
 #: src/Admin/Dashboard.php:264
 msgid "Recent payment intents"
 msgstr "Últimos intentos de pago"

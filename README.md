@@ -1,5 +1,7 @@
 # PWL Integración Fintoc (Lite)
 
+**Tienda y autor:** [Plugin Wordpress LATAM](https://pluginwordpresslatam.cl/) · **Versión Pro (planes y prueba):** [PWL Integración Fintoc Pro](https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/)
+
 Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](https://fintoc.com/).
 
 > **Aclaración:** este proyecto **no es Fintoc** ni está afiliado oficialmente a Fintoc. Es un complemento de terceros (**PluginLATAM / PWL**) que **solo integra** la API pública de Fintoc en WooCommerce. Soporte del complemento: repositorio y autores del plugin. Dudas sobre cuentas, contratos o el producto Fintoc: [Fintoc](https://fintoc.com/).

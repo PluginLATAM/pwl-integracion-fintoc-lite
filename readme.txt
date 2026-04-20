@@ -14,6 +14,8 @@ Fintoc bank transfers for WooCommerce (CLP/MXN). Lite syncs on thank-you; Pro: w
 
 This plugin is developed independently by PluginLATAM and is not affiliated with, endorsed by, or sponsored by Fintoc. It uses Fintoc’s public APIs as described in the [Fintoc documentation](https://docs.fintoc.com/docs/welcome).
 
+**Vendor:** [Plugin Wordpress LATAM](https://pluginwordpresslatam.cl/). **Pro edition (plans & trial):** [PWL Integración Fintoc Pro](https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/).
+
 **PWL Integración Fintoc** connects WooCommerce to [Fintoc](https://fintoc.com/) checkout sessions: customers pay on Fintoc-hosted pages, then return to your store.
 
 * Direct deposit to your Chilean recipient account (RUT, account number, institution).

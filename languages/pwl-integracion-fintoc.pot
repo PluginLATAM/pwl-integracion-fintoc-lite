@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM/pwl-integracion-fintoc-lite"
+msgid "https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/"
 msgstr ""
 
 #. Description of the plugin
@@ -36,7 +36,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: pwl-integracion-fintoc.php
-msgid "https://github.com/PluginLATAM"
+msgid "https://pluginwordpresslatam.cl/"
 msgstr ""
 
 #: pwl-integracion-fintoc.php:38
@@ -279,8 +279,8 @@ msgstr ""
 msgid "Available in the Pro edition."
 msgstr ""
 
-#: src/Admin/Admin.php:601
-msgid "Learn about Pro"
+#: src/Integration/Lite/LiteAdminBootstrap.php
+msgid "Plugin Wordpress LATAM — more WooCommerce integrations"
 msgstr ""
 
 #: src/Core/Plugin.php:62
@@ -657,8 +657,12 @@ msgstr ""
 msgid "Plans and trials open in a new tab."
 msgstr ""
 
-#: src/Admin/Dashboard.php:228
-msgid "View Pro"
+#: src/Integration/Lite/LiteAdminBootstrap.php src/Admin/Dashboard.php
+msgid "View Pro plans"
+msgstr ""
+
+#: src/Admin/Dashboard.php
+msgid "Plugin Wordpress LATAM"
 msgstr ""
 
 #: src/Admin/Dashboard.php:264

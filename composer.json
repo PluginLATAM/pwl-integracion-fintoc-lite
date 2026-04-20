@@ -4,6 +4,12 @@
 	"description": "Integración WordPress/WooCommerce con Fintoc",
 	"type": "wordpress-plugin",
 	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "PluginLATAM",
+			"homepage": "https://pluginwordpresslatam.cl/"
+		}
+	],
 	"autoload": {
 		"psr-4": {
 			"PwlIntegracionFintoc\\": "src/"

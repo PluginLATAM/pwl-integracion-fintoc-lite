@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       PWL Integración Fintoc
- * Plugin URI:        https://github.com/PluginLATAM/pwl-integracion-fintoc-lite
+ * Plugin URI:        https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/
  * Description:       Fintoc integration for WooCommerce payments and reconciliation.
  * Version:           1.0.3
  * Requires at least: 6.0
@@ -9,7 +9,7 @@
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
  * Author:            PluginLATAM
- * Author URI:        https://github.com/PluginLATAM
+ * Author URI:        https://pluginwordpresslatam.cl/
  * Text Domain:       pwl-integracion-fintoc
  * Domain Path:       /languages
  * License:           GPL-3.0-or-later
@@ -44,7 +44,8 @@ define('PWL_FINTOC_EDITION', 'lite'); // injected by build.js
 define('PWL_FINTOC_FILE', __FILE__);
 define('PWL_FINTOC_DIR', plugin_dir_path(__FILE__));
 define('PWL_FINTOC_URL', plugin_dir_url(__FILE__));
-define('PWL_FINTOC_PRO_URL', 'https://github.com/PluginLATAM');
+define('PWL_FINTOC_PRO_URL', 'https://pluginwordpresslatam.cl/producto/integracion-plugin-fintoc-woocommerce-pro/');
+define('PWL_FINTOC_AUTHOR_URL', 'https://pluginwordpresslatam.cl/');
 define('PWL_FINTOC_GATEWAY_CLASS', \PwlIntegracionFintoc\Integration\Gateway\Gateway_Fintoc::class);
 // phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 

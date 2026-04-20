@@ -104,6 +104,14 @@ final class Options
 
 	public static function get_webhook_secret(): string
 	{
+		if (
+			defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro'
+			&& class_exists(\PwlIntegracionFintoc\Integration\Pro\ProFeatures::class)
+			&& ! \PwlIntegracionFintoc\Integration\Pro\ProFeatures::is_pro_license_active()
+		) {
+			return '';
+		}
+
 		return (string) (self::get_all()['webhook_secret'] ?? '');
 	}
 
