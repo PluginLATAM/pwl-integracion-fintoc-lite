@@ -14,6 +14,7 @@ class ComposerStaticInitac154d300e04ad564ff3303ee79e36cc
         'P' => 
         array (
             'PwlIntegracionFintoc\\' => 21,
+            'PWL\\LicenseClient\\' => 18,
         ),
     );
 
@@ -26,11 +27,15 @@ class ComposerStaticInitac154d300e04ad564ff3303ee79e36cc
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'PWL\\LicenseClient\\' => 
+        array (
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PwlIntegracionFintoc\\Admin\\Admin' => __DIR__ . '/../..' . '/src/Admin/Admin.php',
+        'PwlIntegracionFintoc\\Admin\\Dashboard' => __DIR__ . '/../..' . '/src/Admin/Dashboard.php',
         'PwlIntegracionFintoc\\Api\\Client' => __DIR__ . '/../..' . '/src/Api/Client.php',
         'PwlIntegracionFintoc\\Core\\Activator' => __DIR__ . '/../..' . '/src/Core/Activator.php',
         'PwlIntegracionFintoc\\Core\\Deactivator' => __DIR__ . '/../..' . '/src/Core/Deactivator.php',
@@ -46,9 +51,12 @@ class ComposerStaticInitac154d300e04ad564ff3303ee79e36cc
         'PwlIntegracionFintoc\\Integration\\Pro\\EventLog' => __DIR__ . '/../..' . '/src/Integration/Pro/EventLog.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\FintocTransactionSnapshot' => __DIR__ . '/../..' . '/src/Integration/Pro/FintocTransactionSnapshot.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\GatewayFintocPro' => __DIR__ . '/../..' . '/src/Integration/Pro/GatewayFintocPro.php',
+        'PwlIntegracionFintoc\\Integration\\Pro\\LicenseBootstrap' => __DIR__ . '/../..' . '/src/Integration/Pro/LicenseBootstrap.php',
+        'PwlIntegracionFintoc\\Integration\\Pro\\LicenseClient' => __DIR__ . '/../..' . '/src/Integration/Pro/LicenseClient.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\OrderCustomerFintoc' => __DIR__ . '/../..' . '/src/Integration/Pro/OrderCustomerFintoc.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\OrderFintocMetabox' => __DIR__ . '/../..' . '/src/Integration/Pro/OrderFintocMetabox.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\ProEditionActivator' => __DIR__ . '/../..' . '/src/Integration/Pro/ProEditionActivator.php',
+        'PwlIntegracionFintoc\\Integration\\Pro\\ProFeatures' => __DIR__ . '/../..' . '/src/Integration/Pro/ProFeatures.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\WebhookDebugPage' => __DIR__ . '/../..' . '/src/Integration/Pro/WebhookDebugPage.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\WebhookHandler' => __DIR__ . '/../..' . '/src/Integration/Pro/WebhookHandler.php',
         'PwlIntegracionFintoc\\Integration\\Pro\\WebhookSignature' => __DIR__ . '/../..' . '/src/Integration/Pro/WebhookSignature.php',

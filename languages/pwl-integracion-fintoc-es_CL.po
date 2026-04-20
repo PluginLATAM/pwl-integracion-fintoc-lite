@@ -3,7 +3,7 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: PWL Integración Fintoc 1.0.0\n"
+"Project-Id-Version: PWL Integración Fintoc 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pwl-integracion-fintoc\n"
 "Last-Translator: PluginLATAM\n"
 "Language-Team: Spanish (Chile)\n"
@@ -207,6 +207,7 @@ msgstr "Actualización de pedidos cuando Fintoc envía eventos de pago (sin depe
 msgid "Signed webhooks, debug event log, and clearer setup guidance in settings"
 msgstr "Webhooks firmados, registro de depuración y guía de configuración más clara en ajustes"
 #: src/Admin/Admin.php:582
+#: src/Admin/Dashboard.php:194
 msgid "Refunds from WooCommerce admin"
 msgstr "Devoluciones desde el administrador de WooCommerce"
 #: src/Admin/Admin.php:583
@@ -365,12 +366,15 @@ msgctxt "Alert when clipboard is unavailable"
 msgid "Could not copy to clipboard."
 msgstr "No se pudo copiar al portapapeles."
 #: src/Integration/Pro/WebhookDebugPage.php:127
+#: src/Admin/Dashboard.php:426
 msgid "Time"
 msgstr "Hora"
 #: src/Integration/Pro/WebhookDebugPage.php:128
+#: src/Admin/Dashboard.php:427
 msgid "Type"
 msgstr "Tipo"
 #: src/Integration/Pro/WebhookDebugPage.php:129
+#: src/Admin/Dashboard.php:428
 msgid "Event ID"
 msgstr "ID de evento"
 #: src/Integration/Pro/WebhookDebugPage.php:130
@@ -386,16 +390,16 @@ msgstr "Fintoc avisa a tu sitio cuando cambian los pagos y objetos relacionados.
 msgid "Setup in three steps"
 msgstr "Configuración en tres pasos"
 #: src/Integration/Pro/AdminProUi.php:103
-msgid "In the Fintoc Dashboard, create a webhook endpoint whose URL matches the field below (same test or live mode as your secret API key)."
-msgstr "En el panel de Fintoc, crea un endpoint de webhook cuya URL coincida con el campo de abajo (mismo modo de prueba o en vivo que tu clave API secreta)."
+msgid "In the Fintoc Dashboard, create a webhook endpoint whose URL matches the field above (same test or live mode as your secret API key)."
+msgstr "En el panel de Fintoc, crea un endpoint de webhook cuya URL coincida con el campo de arriba (mismo modo de prueba o en vivo que tu clave API secreta)."
 #. translators: %s: localized title of the “Events this plugin handles” section.
 #: src/Integration/Pro/AdminProUi.php:110
 #, php-format
 msgid "Subscribe to the events you need. The list under “%s” shows what is processed when Fintoc can link data to a WooCommerce order."
 msgstr "Suscríbete a los eventos que necesites. La lista bajo «%s» muestra qué se procesa cuando Fintoc puede vincular datos a un pedido de WooCommerce."
 #: src/Integration/Pro/AdminProUi.php:117
-msgid "Paste the signing secret from Fintoc into the field below so requests can be verified."
-msgstr "Pega en el campo de abajo el secreto de firma de Fintoc para poder verificar las solicitudes."
+msgid "Paste the signing secret from Fintoc into the field above so requests can be verified."
+msgstr "Pega en el campo de arriba el secreto de firma de Fintoc para poder verificar las solicitudes."
 #. translators: 1: opening anchor 2: closing, 3: opening anchor 4: closing, 5: opening anchor 6: closing
 #: src/Integration/Pro/AdminProUi.php:128
 #, php-format
@@ -512,3 +516,140 @@ msgstr "BBVA"
 #: src/Settings/Options.php:91
 msgid "HSBC"
 msgstr "HSBC"
+#: src/Admin/Admin.php:173
+#: src/Admin/Admin.php:174
+msgid "Overview"
+msgstr "Resumen"
+#: src/Admin/Dashboard.php:43
+msgid "Payments via Fintoc — quick stats, recent account activity, and shortcuts."
+msgstr "Pagos con Fintoc: estadísticas rápidas, actividad reciente en tu cuenta y accesos directos."
+#. translators: %s: anchor to plugin settings
+#: src/Admin/Dashboard.php:91
+#, php-format
+msgid "Keys, recipient account, and webhooks: %s"
+msgstr "Claves, cuenta receptora y webhooks: %s"
+#: src/Admin/Dashboard.php:92
+msgid "Open Settings"
+msgstr "Abrir ajustes"
+#: src/Admin/Dashboard.php:131
+msgid "Test"
+msgstr "Prueba"
+#: src/Admin/Dashboard.php:132
+msgid "Live"
+msgstr "Producción"
+#: src/Admin/Dashboard.php:136
+msgid "On"
+msgstr "Activado"
+#: src/Admin/Dashboard.php:139
+msgid "Gateway enabled in WooCommerce → Payments."
+msgstr "Pasarela activada en WooCommerce → Pagos."
+#: src/Admin/Dashboard.php:140
+msgid "Enable Fintoc under WooCommerce → Payments."
+msgstr "Activa Fintoc en WooCommerce → Pagos."
+#: src/Admin/Dashboard.php:142
+msgid "Summary metrics"
+msgstr "Resumen de indicadores"
+#: src/Admin/Dashboard.php:143
+msgid "Paid orders · 7 days"
+msgstr "Pedidos pagados · 7 días"
+#: src/Admin/Dashboard.php:144
+msgid "Paid orders · 30 days"
+msgstr "Pedidos pagados · 30 días"
+#: src/Admin/Dashboard.php:143
+#: src/Admin/Dashboard.php:144
+msgid "Processing or completed, Fintoc gateway."
+msgstr "Pedidos en estado «procesando» o «completado», método de pago Fintoc."
+#: src/Admin/Dashboard.php:145
+msgid "API mode"
+msgstr "Modo API"
+#: src/Admin/Dashboard.php:145
+msgid "Matches the secret key used for API calls."
+msgstr "Corresponde a la clave secreta usada para la API."
+#: src/Admin/Dashboard.php:146
+msgid "Fintoc at checkout"
+msgstr "Fintoc en el checkout"
+#: src/Admin/Dashboard.php:178
+msgid "Webhooks, refunds, and event log are active."
+msgstr "Webhooks, reembolsos y registro de eventos activos."
+#: src/Admin/Dashboard.php:180
+msgid "Webhook settings"
+msgstr "Ajustes de webhooks"
+#: src/Admin/Dashboard.php:182
+msgid "Full webhook log"
+msgstr "Registro completo de webhooks"
+#: src/Admin/Dashboard.php:192
+msgid "Order updates from Fintoc when the customer does not return to your site"
+msgstr "Actualizaciones de pedido desde Fintoc aunque el cliente no vuelva a tu sitio"
+#: src/Admin/Dashboard.php:193
+msgid "Signed webhooks and a debug event log"
+msgstr "Webhooks firmados y registro de eventos para depuración"
+#: src/Admin/Dashboard.php:197
+msgid "Clearer setup guidance in settings"
+msgstr "Guía de configuración más clara en los ajustes"
+#: src/Admin/Dashboard.php:198
+msgid "Async payment states and richer order metadata"
+msgstr "Estados de pago asíncronos y más metadatos en el pedido"
+#: src/Admin/Dashboard.php:199
+msgid "Operational visibility for your team"
+msgstr "Más visibilidad operativa para tu equipo"
+#: src/Admin/Dashboard.php:216
+msgid "Get more from Fintoc with Pro"
+msgstr "Sácale más partido a Fintoc con Pro"
+#: src/Admin/Dashboard.php:225
+msgid "Plans and trials open in a new tab."
+msgstr "Planes y períodos de prueba: se abren en otra pestaña."
+#: src/Admin/Dashboard.php:228
+msgid "View Pro"
+msgstr "Ver Pro"
+#: src/Admin/Dashboard.php:264
+msgid "Recent payment intents"
+msgstr "Últimos intentos de pago"
+#: src/Admin/Dashboard.php:267
+msgid "API keys in Settings →"
+msgstr "Claves API en Ajustes →"
+#: src/Admin/Dashboard.php:274
+msgid "No API key yet"
+msgstr "Aún no hay clave API"
+#: src/Admin/Dashboard.php:276
+msgid "Add a secret key to list recent payment intents from your Fintoc account."
+msgstr "Añade una clave secreta para listar los últimos intentos de pago de tu cuenta Fintoc."
+#: src/Admin/Dashboard.php:296
+msgid "No intents in this window"
+msgstr "Sin intentos en este periodo"
+#: src/Admin/Dashboard.php:298
+msgid "Nothing returned for the last 14 days, or no activity yet in this environment."
+msgstr "No hay resultados en los últimos 14 días o aún no hay actividad en este entorno."
+#: src/Admin/Dashboard.php:303
+msgid "Same Fintoc account may show activity outside WooCommerce."
+msgstr "La misma cuenta de Fintoc puede mostrar actividad fuera de WooCommerce."
+#: src/Admin/Dashboard.php:310
+msgid "Status"
+msgstr "Estado"
+#: src/Admin/Dashboard.php:311
+msgid "Amount"
+msgstr "Monto"
+#: src/Admin/Dashboard.php:312
+msgid "ID"
+msgstr "ID"
+#: src/Admin/Dashboard.php:372
+msgid "Could not load payment intents from Fintoc."
+msgstr "No se pudieron cargar los intentos de pago desde Fintoc."
+#: src/Admin/Dashboard.php:393
+#: src/Admin/Dashboard.php:408
+msgid "Webhook events"
+msgstr "Eventos de webhook"
+#: src/Admin/Dashboard.php:396
+msgid "Log unavailable."
+msgstr "Registro no disponible."
+#: src/Admin/Dashboard.php:411
+msgid "View full log →"
+msgstr "Ver registro completo →"
+#: src/Admin/Dashboard.php:418
+msgid "No events yet"
+msgstr "Aún no hay eventos"
+#: src/Admin/Dashboard.php:420
+msgid "When Fintoc posts to your endpoint, verified events appear here."
+msgstr "Cuando Fintoc envíe eventos a tu endpoint, los verificados aparecerán aquí."
+#: src/Admin/Dashboard.php:62
+msgid "WooCommerce is inactive. Install and activate it to take payments with Fintoc."
+msgstr "WooCommerce está inactivo. Instálalo y actívalo para cobrar con Fintoc."

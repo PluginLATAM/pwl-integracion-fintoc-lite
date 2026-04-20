@@ -20,7 +20,7 @@ final class Admin
 
 	public function action_links(array $links): array
 	{
-		$url = admin_url('admin.php?page=pwl-integracion-fintoc');
+		$url = admin_url('admin.php?page=pwl-fintoc-settings');
 		array_unshift($links, '<a href="' . esc_url($url) . '">' . esc_html__('Settings', 'pwl-integracion-fintoc') . '</a>');
 
 		return $links;
@@ -64,8 +64,10 @@ final class Admin
 		$clean = $this->sanitize_settings($input);
 		update_option(Options::OPTION_KEY, $clean, false);
 
+		Dashboard::clear_caches();
+
 		$redirect = add_query_arg(
-			['page' => 'pwl-integracion-fintoc', 'settings-updated' => 'true'],
+			['page' => 'pwl-fintoc-settings', 'settings-updated' => 'true'],
 			admin_url('admin.php'),
 		);
 		wp_safe_redirect($redirect);
@@ -161,18 +163,54 @@ final class Admin
 			__('PWL Fintoc', 'pwl-integracion-fintoc'),
 			$menu_cap,
 			'pwl-integracion-fintoc',
-			[$this, 'render_settings'],
+			[$this, 'render_dashboard'],
 			'dashicons-money',
 			58,
 		);
+
+		add_submenu_page(
+			'pwl-integracion-fintoc',
+			__('Overview', 'pwl-integracion-fintoc'),
+			__('Overview', 'pwl-integracion-fintoc'),
+			$menu_cap,
+			'pwl-integracion-fintoc',
+			[$this, 'render_dashboard'],
+		);
+
+		add_submenu_page(
+			'pwl-integracion-fintoc',
+			__('Settings', 'pwl-integracion-fintoc'),
+			__('Settings', 'pwl-integracion-fintoc'),
+			$menu_cap,
+			'pwl-fintoc-settings',
+			[$this, 'render_settings'],
+		);
+	}
+
+	public function render_dashboard(): void
+	{
+		Dashboard::render();
 	}
 
 	public function enqueue_assets(string $hook): void
 	{
+		$license_slug = PWL_FINTOC_EDITION === 'pro' && class_exists(\PwlIntegracionFintoc\Integration\Pro\LicenseClient::class)
+			? \PwlIntegracionFintoc\Integration\Pro\LicenseClient::license_admin_page_slug()
+			: '';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only screen detection for asset loading
+		$screen_page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+		$is_license_page = $license_slug !== ''
+			&& (
+				str_contains($hook, $license_slug)
+				|| $screen_page === $license_slug
+			);
+
 		// Submenu pages use hooks like `pwl-integracion-fintoc_page_pwl-fintoc-webhook-log`; include slug explicitly for safety across WP versions.
 		if (
 			! str_contains($hook, 'pwl-integracion-fintoc')
+			&& ! str_contains($hook, 'pwl-fintoc-settings')
 			&& ! str_contains($hook, 'pwl-fintoc-webhook-log')
+			&& ! $is_license_page
 		) {
 			return;
 		}
@@ -224,6 +262,32 @@ final class Admin
 
 		echo '<div class="wrap">';
 		echo '<div class="wads">';
+
+		if (
+			defined('PWL_FINTOC_EDITION') && PWL_FINTOC_EDITION === 'pro'
+			&& class_exists(\PwlIntegracionFintoc\Integration\Pro\ProFeatures::class)
+			&& ! \PwlIntegracionFintoc\Integration\Pro\ProFeatures::is_pro_license_active()
+			&& class_exists(\PwlIntegracionFintoc\Integration\Pro\LicenseClient::class)
+		) {
+			$lic_url = admin_url('admin.php?page=' . \PwlIntegracionFintoc\Integration\Pro\LicenseClient::license_admin_page_slug());
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo Components::notice(
+				wp_kses(
+					sprintf(
+						/* translators: %s: link to license screen */
+						__('Pro features (webhooks, refunds, event log) require an active license. %s', 'pwl-integracion-fintoc'),
+						'<a href="' . esc_url($lic_url) . '">' . esc_html__('Activate license', 'pwl-integracion-fintoc') . '</a>',
+					),
+					[
+						'a' => [
+							'href' => [],
+						],
+					],
+				),
+				'warning',
+			);
+			// phpcs:enable
+		}
 
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- WpAdminDS Components::* return escaped HTML.
 		echo Components::page_header(__('PWL Fintoc integration', 'pwl-integracion-fintoc'), $ph_opts);
@@ -384,7 +448,7 @@ final class Admin
 			. '</div>';
 
 		echo '<form method="post" action="' . esc_url(admin_url('admin.php')) . '">';
-		echo '<input type="hidden" name="page" value="pwl-integracion-fintoc" />';
+		echo '<input type="hidden" name="page" value="pwl-fintoc-settings" />';
 		echo '<input type="hidden" name="option_page" value="pwl_fintoc_settings" />';
 		wp_nonce_field('pwl_fintoc_save_settings', 'pwl_fintoc_save_nonce');
 

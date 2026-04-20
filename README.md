@@ -8,7 +8,7 @@ Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](
 
 **Enlaces legales (Chile):** [Términos y condiciones](https://fintoc.com/cl/legal/terminos-y-condiciones) · [Política de privacidad](https://fintoc.com/cl/legal/politica-de-privacidad) · [Términos (pestaña desarrolladores)](https://fintoc.com/cl/legal/terminos-y-condiciones?tab=user-priv)
 
-**Stable tag:** 1.0.1
+**Stable tag:** 1.0.3
 
 ## Checklist antes de producción (Fintoc)
 
@@ -31,6 +31,12 @@ Complemento para WordPress: WooCommerce + pagos a través de la API de [Fintoc](
 | Devoluciones desde WooCommerce | No | Sí |
 
 ## Changelog
+
+### 1.0.2
+
+- **Admin:** panel Resumen (Overview): KPIs, últimos payment intents (API Fintoc), vista previa de webhooks en Pro; los ajustes pasan a un submenú «Ajustes»; diseño más compacto.
+- **i18n:** cadenas en español (Chile) para el panel y el menú.
+- **Desarrollo:** `Client::list_payment_intents()` para `GET /v1/payment_intents` (panel; con caché transitoria).
 
 ### 1.0.1
 

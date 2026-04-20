@@ -57,7 +57,7 @@ abstract class AbstractGateway_Fintoc extends \WC_Payment_Gateway
 						'Keys and bank details: %s. Here: enable the method and checkout labels only.',
 						'pwl-integracion-fintoc',
 					),
-					'<a href="' . esc_url(admin_url('admin.php?page=pwl-integracion-fintoc')) . '">' . esc_html__('PWL Fintoc integration', 'pwl-integracion-fintoc') . '</a>',
+					'<a href="' . esc_url(admin_url('admin.php?page=pwl-fintoc-settings')) . '">' . esc_html__('PWL Fintoc integration', 'pwl-integracion-fintoc') . '</a>',
 				),
 			],
 			'enabled'     => [

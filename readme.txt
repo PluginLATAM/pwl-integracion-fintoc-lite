@@ -4,7 +4,7 @@ Tags: woocommerce, fintoc, payments, chile, transfer
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,6 +65,11 @@ This plugin connects to the **Fintoc API** at `https://api.fintoc.com` over HTTP
 * Mexico — Privacy policy: https://fintoc.com/mx/legal/politica-de-privacidad
 
 == Changelog ==
+
+= 1.0.2 =
+* Admin: Overview dashboard (KPIs, recent payment intents via Fintoc API, Pro webhook preview); plugin settings moved to a Settings submenu; compact layout.
+* i18n: Spanish (Chile) strings for the new dashboard and menu labels.
+* Developer: `Client::list_payment_intents()` for GET /v1/payment_intents (used on the dashboard; cached).
 
 = 1.0.1 =
 * Developer: extension hooks use the prefix `pwlintegracionfintoc_*` (lowercased PHP namespace; matches WordPress.org Plugin Check prefix scanner).

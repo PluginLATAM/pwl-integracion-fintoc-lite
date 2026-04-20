@@ -1,6 +1,50 @@
 {
     "packages": [
         {
+            "name": "pwl/pwl-license-client",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:PluginLATAM/pwl-licence-client.git",
+                "reference": "359c9297db536bd217ae740e3d86b85cdc004d2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PluginLATAM/pwl-licence-client/zipball/359c9297db536bd217ae740e3d86b85cdc004d2b",
+                "reference": "359c9297db536bd217ae740e3d86b85cdc004d2b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "pwl/wp-admin-design-system": "^1.0"
+            },
+            "time": "2026-04-20T01:45:28+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "PWL\\LicenseClient\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PluginWordpressLATAM",
+                    "homepage": "https://pluginwordpresslatam.com"
+                }
+            ],
+            "description": "Cliente PHP para validar licencias contra PWL License System",
+            "support": {
+                "source": "https://github.com/PluginLATAM/pwl-licence-client/tree/v1.2.0",
+                "issues": "https://github.com/PluginLATAM/pwl-licence-client/issues"
+            },
+            "install-path": "../pwl/pwl-license-client"
+        },
+        {
             "name": "pwl/wp-admin-design-system",
             "version": "v1.0.5",
             "version_normalized": "1.0.5.0",

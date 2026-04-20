@@ -29,7 +29,16 @@ final class GatewayLoader
 	 */
 	public function register_gateway(array $methods): array
 	{
-		$methods[] = PWL_FINTOC_GATEWAY_CLASS;
+		$gateway = PWL_FINTOC_GATEWAY_CLASS;
+		if (
+			PWL_FINTOC_EDITION === 'pro'
+			&& class_exists(\PwlIntegracionFintoc\Integration\Pro\ProFeatures::class)
+			&& ! \PwlIntegracionFintoc\Integration\Pro\ProFeatures::is_pro_license_active()
+		) {
+			$gateway = \PwlIntegracionFintoc\Integration\Gateway\Gateway_Fintoc::class;
+		}
+
+		$methods[] = $gateway;
 
 		return $methods;
 	}

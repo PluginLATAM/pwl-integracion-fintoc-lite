@@ -13,6 +13,7 @@ defined('ABSPATH') || exit;
  *
  * @link https://docs.fintoc.com/reference/authentication
  * @link https://docs.fintoc.com/docs/quickstart-payments
+ * @link https://docs.fintoc.com/reference/list-payment-intents-copy List payment intents
  */
 final class Client
 {
@@ -171,5 +172,27 @@ final class Client
 		}
 
 		return self::post('/refunds', $body, self::API_V1);
+	}
+
+	/**
+	 * GET /payment_intents — optional query: since, until, status, per_page, page.
+	 *
+	 * @param array<string, scalar|null> $query
+	 * @return array{ok: bool, code: int, data: mixed, error?: string}
+	 */
+	public static function list_payment_intents(array $query = []): array
+	{
+		$path = '/payment_intents';
+		$filtered = array_filter(
+			$query,
+			static function ($v): bool {
+				return null !== $v && '' !== $v;
+			},
+		);
+		if ($filtered !== []) {
+			$path .= '?' . http_build_query($filtered, '', '&', PHP_QUERY_RFC3986);
+		}
+
+		return self::get($path, self::API_V1);
 	}
 }

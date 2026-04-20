@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'PwlIntegracionFintoc\\Admin\\Admin' => $baseDir . '/src/Admin/Admin.php',
+    'PwlIntegracionFintoc\\Admin\\Dashboard' => $baseDir . '/src/Admin/Dashboard.php',
     'PwlIntegracionFintoc\\Api\\Client' => $baseDir . '/src/Api/Client.php',
     'PwlIntegracionFintoc\\Core\\Activator' => $baseDir . '/src/Core/Activator.php',
     'PwlIntegracionFintoc\\Core\\Deactivator' => $baseDir . '/src/Core/Deactivator.php',
